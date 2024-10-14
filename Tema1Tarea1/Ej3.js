@@ -33,6 +33,7 @@ rl.question('Introduce el valor de A: ', (numA) => {
     }else
     {
         console.log(numA +" no es un numero");
+        rl.close();//para cerrar la interfaz
     }
 });
 

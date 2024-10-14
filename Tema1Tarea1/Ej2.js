@@ -14,7 +14,7 @@ rl.question('Introduce un año entre 1900 y 3000:  ', (entrada) => {
   {
     console.log(anyo +' no está entre 1900 y 3000');      
   }else if(!Number.isInteger(anyo)){
-    console.log(anyo +' no es un numero');
+    console.log(entrada +' no es un numero');
   }else if(anyo % 400 === 0 || (anyo % 4 === 0 && anyo % 100 !== 0)){
     console.log(anyo + ' ES BISIESTO' );
   }else
