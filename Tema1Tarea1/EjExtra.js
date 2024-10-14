@@ -30,19 +30,21 @@ rl.question('Introduce la anchura de la tableta: ', (ancho) => {
                         }else{
                             console.log("La tableta NO se puede partir de un solo corte en "+K+" rectangulos")
                         }
-                        rl.close();
+                        
 
                     }else{
                         console.log(rectangulos + " no es un numero");   
-                        rl.close();
+                        
                     }
+                    rl.close();
 
                 });
             }else //no es numero
             {
                 console.log(altura + " no es un numero");
+                rl.close();//para cerrar la interfaz
             }
-            rl.close();//para cerrar la interfaz
+            
         });
     }else
     {
