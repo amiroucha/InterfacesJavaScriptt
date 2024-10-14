@@ -10,16 +10,17 @@ const rl = readline.createInterface({
 rl.question('Introduce un año entre 1900 y 3000:  ', (entrada) => {
   
   const anyo = Number(entrada);
-  if(anyo < 1900 || anyo > 3000)
+  if(anyo < 1900 || anyo > 3000)//esta fuera de rango
   {
     console.log(anyo +' no está entre 1900 y 3000');      
-  }else if(!Number.isInteger(anyo)){
+  }else if(!Number.isInteger(anyo))//no es un numero
+  {
     console.log(entrada +' no es un numero');
-  }else if(anyo % 400 === 0 || (anyo % 4 === 0 && anyo % 100 !== 0)){
+  }else if(anyo % 400 === 0 || (anyo % 4 === 0 && anyo % 100 !== 0)){//es bisiesto
     console.log(anyo + ' ES BISIESTO' );
   }else
   {
-    console.log(anyo + ' no es bisiesto' );
+    console.log(anyo + ' no es bisiesto' );//si llega aqui no es bisiesto
   }
 
 
