@@ -1,6 +1,6 @@
 // Variables globales de javaScript
 let baraja = [];
-let puntosJugador01 = 0;
+let puntosJugador = 0;
 let puntosComputadora = 0;
 
 const btnPedir = document.querySelector('#btnPedir');
@@ -8,8 +8,8 @@ const btnPasar = document.querySelector('#btnPasar');
 const btnNuevoJuego = document.querySelector('#btnNuevoJuego');
 
 const puntosHTMLJugador01 = document.querySelector('.jugador01-cartas, small');
-//tengo que buscar el small de la clase jugador NO SE SI ES ASIIII AYUDAAAAAAAA
-const puntosHTMLComputadora =  ;
+//tengo que buscar el small de la clase jugador
+const puntosHTMLComputadora = document.querySelectorAll('small');
 const divCartasJugador01 = document.querySelector('#jugador01-cartas');
 const divCartasComputadora = document.querySelector('#computadoras-cartas');
 
@@ -37,12 +37,40 @@ const valorCarta = (carta) => {
     return valor * 1;
 }
 
+//turno del ordenador
 const turnoComputadora = (puntosMinimos) => {
     
- 
+    do
+    {
+        const carta = pedirCarta();
+        puntosComputadora = puntosComputadora + valorCarta(carta);
+        puntosHTMLComputadora[1].innerText = puntosComputadora;
+
+        const imgCarta = document.createElement('img');
+        imgCarta.src = 'assets/cartas/${carta}.png'; //carpeta donde estan las cartas
+        imgCarta.classList.add('carta');
+        divCartasComputadora.append(imgCarta);
+
+        if(puntosMinimos > 21)
+        {
+            break;
+        }
+
+
+    }while((puntosComputadora<puntosMinimos) && (puntosMinimos<21))
 
     setTimeout(() => {
        // Meter aquí los alert para que se muestren después de mostrar las cartas de la computadora
+        if(puntosJugador === puntosComputadora)
+        {
+            alert('Empatee');
+        }else if (puntosJugador > puntosComputadora && puntosJugador <= 21  || puntosComputadora > 21)
+        {
+            alert('HAS GANADO');
+        }else if (puntosJugador < puntosComputadora && puntosComputadora <= 21 || puntosJugador > 21)
+        {
+            alert('HAS PERDIDOO');
+        }
     },100);
 }
 
