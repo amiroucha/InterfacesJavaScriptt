@@ -111,15 +111,15 @@ btnPasar.addEventListener('click', () => {
 });
 
 btnNuevoJuego.addEventListener('click', () =>{
-    deck.length= 0;
-    crearDeck();
+    baraja.length= 0;
+    crearBarajaAleatoria();
     puntosHTML[0].innerText= 0;
     puntosHTML[1].innerText= 0;
     puntosComputadora= 0;
     puntosJugador= 0;
     btnDetener.disabled= false;
     btnPedir.disabled= false;
-    divCartasJugador.innerHTML= '';
+    divCartasJugador01.innerHTML= '';
     divCartasComputadora.innerText ='';
    
 });
