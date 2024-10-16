@@ -7,10 +7,10 @@ const btnPedir = document.querySelector('#btnPedir');
 const btnPasar = document.querySelector('#btnPasar');
 const btnNuevoJuego = document.querySelector('#btnNuevoJuego');
 
-const puntosHTMLJugador01 = document.querySelector('.jugador01-cartas, small');
+const puntosHTMLJugador01 = document.querySelector('.jugador-cartas, small');
 //tengo que buscar el small de la clase jugador
 const puntosHTMLComputadora = document.querySelectorAll('small');
-const divCartasJugador01 = document.querySelector('#jugador01-cartas');
+const divCartasJugador01 = document.querySelector('#jugador-cartas');
 const divCartasComputadora = document.querySelector('#computadoras-cartas');
 
 
@@ -19,6 +19,7 @@ const divCartasComputadora = document.querySelector('#computadoras-cartas');
 // Funciones
 
 // La función devuelve un array con todas las cartas de una baraja de forma aleatoria
+//suffle para barajar las cartas
 function crearBarajaAleatoria() {
     let cartas = ['01C','02C','03C','04C','05C','06C','07C','08C','09C','10C','10JC','10QC','10KC',
                   '01D','02D','03D','04D','05D','06D','07D','08D','09D','10D','10JD','10QD','10KD',
@@ -26,7 +27,7 @@ function crearBarajaAleatoria() {
                   '01T','02T','03T','04T','05T','06T','07T','08T','09T','10T','10JT','10QT','10KT'];
 
     
-    return;
+    return ;
 }
 
 const pedirCarta = () => {
