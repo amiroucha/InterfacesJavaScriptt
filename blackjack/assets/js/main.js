@@ -7,7 +7,7 @@ const btnPedir = document.querySelector('#btnPedir');
 const btnPasar = document.querySelector('#btnPasar');
 const btnNuevoJuego = document.querySelector('#btnNuevoJuego');
 
-const puntosHTMLJugador01 = document.querySelector('.jugador-cartas, small');
+const puntosHTMLJugador = document.querySelector('#jugador-cartas small');
 //tengo que buscar el small de la clase jugador
 const puntosHTMLComputadora = document.querySelectorAll('small');
 const divCartasJugador01 = document.querySelector('#jugador-cartas');
@@ -26,19 +26,28 @@ function crearBarajaAleatoria() {
                   '01P','02P','03P','04P','05P','06P','07P','08P','09P','10P','10JP','10QP','10KP',
                   '01T','02T','03T','04T','05T','06T','07T','08T','09T','10T','10JT','10QT','10KT'];
 
-    
-    return ;
+    cartas = cartas.sort(() => Math.random() - 0.5);
+    baraja = cartas;
 }
 
 const pedirCarta = () => {
-    return 
+    if (baraja.length === 0) {
+        throw 'Baraja vacia'; 
+    }
+    const carta = cartas.pop();
+    return carta;
 }
+pedirCarta();
 
 const valorCarta = (carta) => {
     const valor = carta.substring(0, carta.length - 1);
 
-    return valor * 1;
+    return (isNaN(valor)) ?
+    ((valor === 'A') ? 11 : 10) :
+    valor * 1;
 }
+const cartaValor = valorCarta(pedirCarta());
+console.log(cartaValor);
 
 //turno del ordenador
 const turnoComputadora = (puntosMinimos) => {
@@ -50,7 +59,7 @@ const turnoComputadora = (puntosMinimos) => {
         puntosHTMLComputadora[1].innerText = puntosComputadora;
 
         const imgCarta = document.createElement('img');
-        imgCarta.src = 'assets/cartas/${carta}.png'; //carpeta donde estan las cartas
+        imgCarta.src = `assets/cartas/${carta}.png`; //carpeta donde estan las cartas
         imgCarta.classList.add('carta');
         divCartasComputadora.append(imgCarta);
 
@@ -82,10 +91,10 @@ const turnoComputadora = (puntosMinimos) => {
 btnPedir.addEventListener('click', () => {
     const carta   = pedirCarta();
     puntosJugador = puntosJugador + valorCarta(carta);
-    puntosHTML[0].innerText = puntosJugador;
+    puntosHTMLJugador.innerText = puntosJugador;
 
     const imgCarta = document.createElement('img');
-    imgCarta.src = `assets/cartas/${carta}.png`;
+    imgCarta.src = 'assets/cartas/${carta}.png';
     imgCarta.classList.add('carta');
     divCartasJugador.append(imgCarta);
 
@@ -106,19 +115,18 @@ btnPedir.addEventListener('click', () => {
 });
 
 btnPasar.addEventListener('click', () => {
-    btnDetener.disabled = true;
-    btnPedir.disabled   = true;
+    btnPasar.disabled = true;
+    btnPedir.disabled = true;
     turnoComputadora(puntosJugador);
 });
 
 btnNuevoJuego.addEventListener('click', () =>{
-    baraja.length= 0;
     crearBarajaAleatoria();
-    puntosHTML[0].innerText= 0;
-    puntosHTML[1].innerText= 0;
     puntosComputadora= 0;
     puntosJugador= 0;
-    btnDetener.disabled= false;
+    puntosHTMLJugador01.innerText = 0;
+    puntosHTMLComputadora[1].innerText = 0;
+    btnPasar.disabled= false;
     btnPedir.disabled= false;
     divCartasJugador01.innerHTML= '';
     divCartasComputadora.innerText ='';
