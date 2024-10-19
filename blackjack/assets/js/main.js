@@ -6,15 +6,15 @@ let puntosComputadora = 0;
 const btnPedir = document.querySelector('#btnPedir');
 const btnPasar = document.querySelector('#btnPasar');
 const btnNuevoJuego = document.querySelector('#btnNuevoJuego');
+console.log(btnPedir, btnPasar, btnNuevoJuego);
 
-const puntosHTMLJugador = document.querySelector('#jugador-cartas small');
+const puntosHTMLJugador = document.querySelector('.jugador small');
 //tengo que buscar el small de la clase jugador
-const puntosHTMLComputadora = document.querySelectorAll('small');
-const divCartasJugador01 = document.querySelector('#jugador-cartas');
+const puntosHTMLComputadora = document.querySelectorAll('.computadora small');
+const divCartasJugador = document.querySelector('#jugador-cartas');
 const divCartasComputadora = document.querySelector('#computadoras-cartas');
 
 
-// console.log(btnPedir);
 
 // Funciones
 
@@ -24,30 +24,25 @@ function crearBarajaAleatoria() {
     let cartas = ['01C','02C','03C','04C','05C','06C','07C','08C','09C','10C','10JC','10QC','10KC',
                   '01D','02D','03D','04D','05D','06D','07D','08D','09D','10D','10JD','10QD','10KD',
                   '01P','02P','03P','04P','05P','06P','07P','08P','09P','10P','10JP','10QP','10KP',
-                  '01T','02T','03T','04T','05T','06T','07T','08T','09T','10T','10JT','10QT','10KT'];
+                  '01T','02T','03T','04T','05T','06T','07T','08T','09T','10T','10JT','10QT','10KT'
+                ];
 
-    cartas = cartas.sort(() => Math.random() - 0.5);
-    baraja = cartas;
+    baraja = cartas.sort(() => Math.random() - 0.5);
 }
 
 const pedirCarta = () => {
     if (baraja.length === 0) {
         throw 'Baraja vacia'; 
     }
-    const carta = cartas.pop();
+    const carta = baraja.pop();
     return carta;
 }
-pedirCarta();
 
 const valorCarta = (carta) => {
     const valor = carta.substring(0, carta.length - 1);
 
-    return (isNaN(valor)) ?
-    ((valor === 'A') ? 11 : 10) :
-    valor * 1;
+    return (valor === '01') ? 1 : (isNaN(valor) ? 10 : valor * 1);
 }
-const cartaValor = valorCarta(pedirCarta());
-console.log(cartaValor);
 
 //turno del ordenador
 const turnoComputadora = (puntosMinimos) => {
@@ -90,11 +85,11 @@ const turnoComputadora = (puntosMinimos) => {
 
 btnPedir.addEventListener('click', () => {
     const carta   = pedirCarta();
-    puntosJugador = puntosJugador + valorCarta(carta);
+    puntosJugador += valorCarta(carta);
     puntosHTMLJugador.innerText = puntosJugador;
 
     const imgCarta = document.createElement('img');
-    imgCarta.src = 'assets/cartas/${carta}.png';
+    imgCarta.src = `assets/cartas/${carta}.png`;
     imgCarta.classList.add('carta');
     divCartasJugador.append(imgCarta);
 
@@ -108,7 +103,7 @@ btnPedir.addEventListener('click', () => {
     }else if(puntosJugador === 21){
         
         btnPedir.disabled = true;
-        btnDetener.disabled = true;
+        btnPasar.disabled = true;
         console.log("Ganaste");
         turnoComputadora(puntosJugador);
     }
@@ -122,14 +117,15 @@ btnPasar.addEventListener('click', () => {
 
 btnNuevoJuego.addEventListener('click', () =>{
     crearBarajaAleatoria();
+
     puntosComputadora= 0;
     puntosJugador= 0;
-    puntosHTMLJugador01.innerText = 0;
-    puntosHTMLComputadora[1].innerText = 0;
+    puntosHTMLJugador.innerText = 0;
+    puntosHTMLComputadora.innerText = 0;
     btnPasar.disabled= false;
     btnPedir.disabled= false;
-    divCartasJugador01.innerHTML= '';
-    divCartasComputadora.innerText ='';
+    divCartasJugador.innerHTML= '';
+    divCartasComputadora.innerHTML ='';
    
 });
 
