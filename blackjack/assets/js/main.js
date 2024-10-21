@@ -46,6 +46,7 @@ const valorCarta = (carta) => {
 
 //turno del ordenador
 const turnoComputadora = (puntosMinimos) => {
+
     if (puntosMinimos <= 21) {
         do {
             const carta = pedirCarta(); //cogemos una nueva carta
@@ -58,21 +59,25 @@ const turnoComputadora = (puntosMinimos) => {
             divCartasComputadora.append(imgCarta); //se añade la imagen de la carta
 
             //Si el jugador se ha pasado de los 21, la computadora ya no juega, ya gano
-            if (puntosMinimos > 21) break;
+            if (puntosMinimos > 21)
+            { 
+                break;
+            }
 
         } while (puntosComputadora < puntosMinimos && puntosComputadora <= 21);
     }
+
     setTimeout(() => {
        //Alert para avisar de quien gano y perdio
         if(puntosJugador === puntosComputadora)
         {
-            alert('Empatee');
-        }else if (puntosJugador > puntosComputadora && puntosJugador <= 21  || puntosComputadora > 21)
+            alert('Empate');
+        }else if ((puntosJugador > puntosComputadora && puntosJugador <= 21)  || puntosComputadora > 21)
         {
-            alert('HAS GANADO');
-        }else if (puntosJugador < puntosComputadora && puntosComputadora <= 21 || puntosJugador > 21)
+            alert('Has ganado');
+        }else if ((puntosJugador < puntosComputadora) && (puntosComputadora <= 21) || puntosJugador > 21)
         {
-            alert('HAS PERDIDOO');
+            alert('Has perdido');
         }
     },100);
 }
@@ -93,16 +98,18 @@ btnPedir.addEventListener('click', () => {
         //se desabilitan pedir y pasar porq ya ha excedido 21
         btnPedir.disabled = true;
         btnPasar.disabled = true;
-        console.log("Perdiste");
-        turnoComputadora(puntosJugador);
+        setTimeout(() => {
+            alert("Has perdido");
+        },100);
 
     }else if(puntosJugador === 21){
         
         //se desabilitan pedir y pasar porq ya ha gaado        
         btnPedir.disabled = true;
         btnPasar.disabled = true;
-        console.log("Ganaste");
-        turnoComputadora(puntosJugador);
+        setTimeout(() => {
+            alert("Has ganado");
+        },100);
     }
 });
 
