@@ -12,7 +12,7 @@ const gameState = {
   
   // Función para inicializar el tablero de juego
   function initGame() {
-    boardElement.innerHTML = ''; //// Limpia el contenido del tablero
+    boardElement.innerHTMLS = ''; //// Limpia el contenido del tablero
     gameState.board.forEach((_, index) => {
       const cell = document.createElement('div');; // Crea un nuevo div para cada celda
       cell.classList.add('cell');// Añade la clase 'cell' al div
