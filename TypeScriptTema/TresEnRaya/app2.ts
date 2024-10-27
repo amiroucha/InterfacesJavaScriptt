@@ -61,7 +61,20 @@ class Tablero {
     private updateBoard(): void {
       const cells = this.boardElement.querySelectorAll('.cell'); //coge todas las celdas
       cells.forEach((cell, index) => {
-        cell.textContent = this.board[index]; // Asigna el contenido del tablero a cada celda
+        cell.innerHTML = '';  
+        if (this.board[index] === 'X') {
+            const img = document.createElement('img'); 
+            img.src = 'Imagenes/BobEsponja.png'; // Ruta a la imagen de 'X'
+            img.alt = 'X';
+            cell.appendChild(img); // Añade la imagen a la celda
+        } else if (this.board[index] === 'O') {
+            const img = document.createElement('img'); 
+            img.src = 'Imagenes/Patricio.png'; // Ruta a la imagen de 'O'
+            img.alt = 'O';
+            cell.appendChild(img); // Añade la imagen a la celda
+        }
+
+
       });
     }
   

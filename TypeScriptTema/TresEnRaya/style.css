@@ -1,6 +1,6 @@
 body {
     background-color: #000; /* Fondo negro */
-    color: #bac800; /* Texto blanco */
+    color: #bac800; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,13 +8,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-.cell.X {
-    color: #ff0000; /* Rojo para X */
-}
 
-.cell.O {
-    color: #0000ff; /* Azul para O */
-}
 .container {
     text-align: center;
 }
@@ -23,7 +17,10 @@ h1 {
     font-size: 2em;
     margin-bottom: 20px;
 }
-
+.cell img {
+    width: 100%; 
+    height: auto; 
+}
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -35,7 +32,8 @@ h1 {
 .cell {
     width: 100px;
     height: 100px;
-    background-color: #e8e8e85d;
+    background-color: #000000;
+    border: 2px solid rgb(166, 182, 60);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,8 +42,8 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.cell:hover {
-    background-color: #aadd00;
+.cell:hover { /*color de fondo al pasar por encima*/
+    background-color: #646464;
 }
 
 .status {
