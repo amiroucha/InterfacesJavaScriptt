@@ -19,7 +19,12 @@ function initGame(): void {
     });
     actualizaStatus();
 }
-
+// act estado de quien es el siguiente en jugar
+function actualizaStatus(): void {
+    if (!gameState.getIsGameOver()) { // actualiza si el juego no terminó
+        statusElement.textContent = `Turno del jugador: ${gameState.getCurrentPlayer()}`; // Muestra el jugador actual
+    }
+}
 // controla el click en una celda
 function celdaClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
@@ -61,12 +66,6 @@ function updateBoard(): void {
     });
 }
 
-// act estado de quien es el siguiente en jugar
-function actualizaStatus(): void {
-    if (!gameState.getIsGameOver()) { // actualiza si el juego no terminó
-        statusElement.textContent = `Turno del jugador: ${gameState.getCurrentPlayer()}`; // Muestra el jugador actual
-    }
-}
 
 resetButton.addEventListener('click', (): void => {
     gameState.resetGame();
