@@ -7,8 +7,17 @@ class Tablero {
         this.boardElement = document.getElementById('board');
         this.statusElement = document.getElementById('status');
         this.resetButton = document.getElementById('reset');
+        this.puntosXElement = document.getElementById('scoreX');
+        this.puntosOElement = document.getElementById('scoreO');
+        this.puntosX = 0;
+        this.puntosO = 0;
         this.resetButton.addEventListener('click', () => this.resetGame());
         document.addEventListener('DOMContentLoaded', () => this.initGame());
+        this.newGameButton = document.getElementById('newgame');
+        this.newGameButton.addEventListener('click', () => this.startNewGame());
+    }
+    getPlayerName() {
+        return this.currentPlayer === 'X' ? 'Bob Esponja' : 'Patricio';
     }
     // Método para inicializar el tablero de juego
     initGame() {
@@ -35,7 +44,14 @@ class Tablero {
         //comprobar resultados
         if (this.checkWinner()) { //hay ganador
             this.isGameOver = true; //el juego termina
-            this.statusElement.textContent = `Jugador ${this.currentPlayer} ha ganado!`;
+            this.statusElement.textContent = `Jugador ${this.getPlayerName()} ha ganado!`;
+            if (this.currentPlayer === 'X') {
+                this.puntosX++;
+            }
+            else {
+                this.puntosO++;
+            }
+            this.updateScore(); // Actualiza la visualización de la puntuación
         }
         else if (this.board.every(cell => cell !== '')) { //hay  empate
             this.isGameOver = true;
@@ -45,6 +61,11 @@ class Tablero {
             this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X'; // Alterna entre 'X' y 'O'
             this.updateStatus(); //Act estado del juego
         }
+    }
+    //puntos
+    updateScore() {
+        this.puntosXElement.textContent = `Bob Esponja: ${this.puntosX}`;
+        this.puntosOElement.textContent = `Patricio: ${this.puntosO}`;
     }
     //Act el tablero visualmente
     updateBoard() {
@@ -68,7 +89,7 @@ class Tablero {
     //quien es el siguiente en jugar
     updateStatus() {
         if (!this.isGameOver) { //en caso de seguir jugando
-            this.statusElement.textContent = `Turno del jugador: ${this.currentPlayer}`; // Muestra el jugador actual
+            this.statusElement.textContent = `Turno del jugador: ${this.getPlayerName()}`; // Muestra el jugador actual
         }
     }
     // Verifica si hay un ganador
@@ -99,6 +120,13 @@ class Tablero {
         this.isGameOver = false; //estado del juego false
         this.updateBoard();
         this.updateStatus();
+    }
+    //boton de nueva partida
+    startNewGame() {
+        this.puntosX = 0;
+        this.puntosO = 0;
+        this.updateScore();
+        this.resetGame();
     }
 }
 // se inicia el juegp

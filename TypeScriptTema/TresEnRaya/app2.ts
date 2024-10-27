@@ -6,6 +6,12 @@ class Tablero {
     private boardElement: HTMLElement; //Elemento del tablero
     private statusElement: HTMLElement; //Elemento del estado
     private resetButton: HTMLButtonElement; //Botón reinicia el juego
+    private newGameButton: HTMLButtonElement; //reinicia los puntos
+    private puntosX: number; // Puntos para Bob Esponja
+    private puntosO: number; // Puntos para Patricio
+    private puntosXElement: HTMLElement; // Elemento HTML para mostrar puntuación de Bob Esponja
+    private puntosOElement: HTMLElement;
+   
   
     constructor() {
       this.board = Array(9).fill(''); //tablero de 9 celdas, vacías al 1
@@ -14,9 +20,16 @@ class Tablero {
       this.boardElement = document.getElementById('board') as HTMLElement; 
       this.statusElement = document.getElementById('status') as HTMLElement;
       this.resetButton = document.getElementById('reset') as HTMLButtonElement; 
+      this.puntosXElement = document.getElementById('scoreX') as HTMLElement;
+      this.puntosOElement = document.getElementById('scoreO') as HTMLElement;
+      this.puntosX= 0;
+      this.puntosO = 0;
 
       this.resetButton.addEventListener('click', () => this.resetGame()); 
       document.addEventListener('DOMContentLoaded', () => this.initGame()); 
+
+      this.newGameButton = document.getElementById('newgame') as HTMLButtonElement; 
+      this.newGameButton.addEventListener('click', () => this.startNewGame());
     }
 
     private getPlayerName(): string {
@@ -51,7 +64,13 @@ class Tablero {
       //comprobar resultados
       if (this.checkWinner()) {//hay ganador
         this.isGameOver = true; //el juego termina
-        this.statusElement.textContent = `Jugador ${this.currentPlayer} ha ganado!`;
+        this.statusElement.textContent = `Jugador ${this.getPlayerName()} ha ganado!`;
+        if (this.currentPlayer === 'X') {
+            this.puntosX++;
+          } else {
+            this.puntosO++;
+          }
+          this.updateScore(); // Actualiza la visualización de la puntuación
       } else if (this.board.every(cell => cell !== '')) { //hay  empate
         this.isGameOver = true;
         this.statusElement.textContent = 'Empate!';
@@ -60,7 +79,13 @@ class Tablero {
         this.updateStatus(); //Act estado del juego
       }
     }
-  
+
+    //puntos
+    private updateScore(): void {
+        this.puntosXElement.textContent = `Bob Esponja: ${this.puntosX}`;
+        this.puntosOElement.textContent = `Patricio: ${this.puntosO}`;
+    }
+
     //Act el tablero visualmente
     private updateBoard(): void {
       const cells = this.boardElement.querySelectorAll('.cell'); //coge todas las celdas
@@ -120,6 +145,13 @@ class Tablero {
       this.isGameOver = false; //estado del juego false
       this.updateBoard(); 
       this.updateStatus();
+    }
+    //boton de nueva partida
+    private startNewGame(): void {
+        this.puntosX = 0; 
+        this.puntosO = 0;
+        this.updateScore(); 
+        this.resetGame(); 
     }
   }
   

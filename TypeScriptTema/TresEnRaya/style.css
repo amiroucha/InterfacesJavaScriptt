@@ -26,16 +26,16 @@ body {
     text-align: center;
     padding-top: 0;
 }
-.jugadores{
-    width: 84px; 
-    height: 100px; 
+.jugadores{ /*img de los jug*/
+    width: 120px; 
+    height: 150px; 
     display: inline-block;/*Para que me salgan alado las imag*/
 }
 
 .imagenes{
     display: flex; /* flexbox para colocar las imágenes en fila */
     justify-content: center;
-    gap: 300px; /*espacio entre las img*/
+    gap: 250px; /*espacio entre las img*/
     display: flex
 }
 
@@ -52,6 +52,8 @@ body {
     grid-template-rows: repeat(3, 100px);
     gap: 5px;
     margin-bottom: 20px;
+    justify-content: space-between; /* Espacio entre el tablero y el botón */
+    align-items: center; 
 }
 
 .cell {
@@ -74,18 +76,49 @@ body {
 .status {
     font-size: 1.2em;
     margin-bottom: 20px;
+    color: #f5f6f1;
 }
 
+/*boton para reiniciar partida*/
 .reset-button {
-    background-color: #96241c;
-    color: white;
-    border: none;
+    background-color: #c2251a;
+    color: rgb(255, 255, 255);
+    border:none;
+    align-items: right;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
 }
+.reset-button-container{
+    width:auto; /* Hacer que ocupe todo el ancho del contenedor principal */
+    display: flex; /* Usar flex para posicionar el botón */
+    justify-content:right; /* Empuja el botón hacia la derecha */
+    padding-right: 20px; /* Añade espacio a la derecha para separar un poco el botón */
+}
 
 .reset-button:hover {
-    background-color: #d32f2f;
+    background-color: #b90404;
+}
+
+/*boton para reiniciar puntos*/
+.newgame-container {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    display: flex; /* Usar flexbox para alinear el botón */
+    justify-content: flex-end; /* Alinear el botón a la derecha */
+    padding-top: 10px; /* Espacio por encima del botón */
+}
+
+.newgame-container button {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espacio dentro del botón */
+    font-size: 1em; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+.newgame-container button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
 }
