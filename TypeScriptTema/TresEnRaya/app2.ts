@@ -18,7 +18,11 @@ class Tablero {
       this.resetButton.addEventListener('click', () => this.resetGame()); 
       document.addEventListener('DOMContentLoaded', () => this.initGame()); 
     }
-  
+
+    private getPlayerName(): string {
+        return this.currentPlayer === 'X' ? 'Bob Esponja' : 'Patricio';
+      }
+
     // Método para inicializar el tablero de juego
     private initGame(): void {
       this.boardElement.innerHTML = ''; //Limpio el contenido del tablero
@@ -81,7 +85,7 @@ class Tablero {
     //quien es el siguiente en jugar
     private updateStatus(): void {
       if (!this.isGameOver) { //en caso de seguir jugando
-        this.statusElement.textContent = `Turno del jugador: ${this.currentPlayer}`; // Muestra el jugador actual
+        this.statusElement.textContent = `Turno del jugador: ${this.getPlayerName()}`; // Muestra el jugador actual
       }
     }
   

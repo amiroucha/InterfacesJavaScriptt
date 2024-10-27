@@ -1,68 +1,80 @@
 "use strict";
 class Tablero {
     constructor() {
-        this.board = Array(9).fill(''); // Crea un tablero de 9 celdas, inicialmente vacías
-        this.currentPlayer = 'X'; // Empieza jugando la 'X'
-        this.isGameOver = false; // Inicialmente el juego no ha terminado
-        this.boardElement = document.getElementById('board'); // Elemento del tablero
-        this.statusElement = document.getElementById('status'); // Elemento para mostrar el estado
-        this.resetButton = document.getElementById('reset'); // Botón para reiniciar el juego
-        this.resetButton.addEventListener('click', () => this.resetGame()); // Maneja el evento de reinicio
-        document.addEventListener('DOMContentLoaded', () => this.initGame()); // Inicializa el juego al cargar la página
+        this.board = Array(9).fill(''); //tablero de 9 celdas, vacías al 1
+        this.currentPlayer = 'X'; //Empieza la 'X'
+        this.isGameOver = false;
+        this.boardElement = document.getElementById('board');
+        this.statusElement = document.getElementById('status');
+        this.resetButton = document.getElementById('reset');
+        this.resetButton.addEventListener('click', () => this.resetGame());
+        document.addEventListener('DOMContentLoaded', () => this.initGame());
     }
     // Método para inicializar el tablero de juego
     initGame() {
-        this.boardElement.innerHTML = ''; // Limpia el contenido del tablero
+        this.boardElement.innerHTML = ''; //Limpio el contenido del tablero
         this.board.forEach((_, index) => {
-            const cell = document.createElement('div'); // Crea un nuevo div para cada celda
-            cell.classList.add('cell'); // Añade la clase 'cell' al div
-            cell.dataset.index = index.toString(); // Asigna el índice de la celda al atributo data-index
-            cell.addEventListener('click', (event) => this.handleCellClick(event)); // Añade un evento de clic a la celda
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.index = index.toString();
+            cell.addEventListener('click', (event) => this.CellClick(event)); // asigna evento click a la celda
             this.boardElement.appendChild(cell); // Añade la celda al tablero
         });
         this.updateStatus(); // Actualiza el estado del juego
     }
     // Maneja el clic en una celda del tablero
-    handleCellClick(event) {
-        const target = event.target; // Obtiene el elemento clickeado
-        const index = target.dataset.index; // Obtiene el índice de la celda clickeada
-        // Si la celda ya fue seleccionada o el juego ha terminado, no hacer nada
+    CellClick(event) {
+        const target = event.target; //elemento click
+        const index = target.dataset.index; //índice de la celda click
+        //Si la celda ha sido seleccionada ya o el juego sigue, no hace nada
         if (!index || this.board[+index] || this.isGameOver)
             return;
         // Actualiza la celda con el símbolo del jugador actual
         this.board[+index] = this.currentPlayer;
-        this.updateBoard(); // Actualiza el tablero visualmente
-        // Verifica si hay un ganador o empate
-        if (this.checkWinner()) {
-            this.isGameOver = true; // Marca el juego como terminado
+        this.updateBoard();
+        //comprobar resultados
+        if (this.checkWinner()) { //hay ganador
+            this.isGameOver = true; //el juego termina
             this.statusElement.textContent = `Jugador ${this.currentPlayer} ha ganado!`;
         }
-        else if (this.board.every(cell => cell !== '')) { // Marca el juego como terminado si hay empate
+        else if (this.board.every(cell => cell !== '')) { //hay  empate
             this.isGameOver = true;
             this.statusElement.textContent = 'Empate!';
         }
         else { // Alterna entre 'X' y 'O'
             this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X'; // Alterna entre 'X' y 'O'
-            this.updateStatus(); // Actualiza el estado del juego
+            this.updateStatus(); //Act estado del juego
         }
     }
-    // Actualiza el contenido del tablero visualmente
+    //Act el tablero visualmente
     updateBoard() {
-        const cells = this.boardElement.querySelectorAll('.cell'); // Selecciona todas las celdas
+        const cells = this.boardElement.querySelectorAll('.cell'); //coge todas las celdas
         cells.forEach((cell, index) => {
-            cell.textContent = this.board[index]; // Asigna el contenido del tablero a cada celda
+            cell.innerHTML = '';
+            if (this.board[index] === 'X') {
+                const img = document.createElement('img');
+                img.src = 'Imagenes/BobEsponja.png'; // Ruta a la imagen de 'X'
+                img.alt = 'X';
+                cell.appendChild(img); // Añade la imagen a la celda
+            }
+            else if (this.board[index] === 'O') {
+                const img = document.createElement('img');
+                img.src = 'Imagenes/Patricio.png'; // Ruta a la imagen de 'O'
+                img.alt = 'O';
+                cell.appendChild(img); // Añade la imagen a la celda
+            }
         });
     }
-    // Actualiza el estado de quién es el siguiente en jugar
+    //quien es el siguiente en jugar
     updateStatus() {
-        if (!this.isGameOver) { // Solo actualiza si el juego no ha terminado
+        if (!this.isGameOver) { //en caso de seguir jugando
             this.statusElement.textContent = `Turno del jugador: ${this.currentPlayer}`; // Muestra el jugador actual
         }
     }
     // Verifica si hay un ganador
     checkWinner() {
         const winningCombinations = [
-            [0, 1, 2],
+            [0, 1, 2], //ccombinaciones ganadoras posibles
             [3, 4, 5],
             [6, 7, 8],
             [0, 3, 6],
@@ -73,7 +85,7 @@ class Tablero {
         ];
         // Verifica si alguna combinación ganadora tiene los mismos símbolos
         return winningCombinations.some(combo => {
-            const [a, b, c] = combo; // Desestructura la combinación
+            const [a, b, c] = combo;
             return (this.board[a] && // Verifica que la celda no esté vacía
                 this.board[a] === this.board[b] && // Compara la celda a con b
                 this.board[a] === this.board[c] // Compara la celda a con c
@@ -82,12 +94,12 @@ class Tablero {
     }
     // Reinicia el juego
     resetGame() {
-        this.board = Array(9).fill(''); // Reinicia el tablero a celdas vacías
-        this.currentPlayer = 'X'; // Reinicia el jugador actual a 'X'
-        this.isGameOver = false; // Reinicia el estado del juego
-        this.updateBoard(); // Actualiza el tablero visualmente
-        this.updateStatus(); // Actualiza el estado del juego
+        this.board = Array(9).fill(''); //tablero a celdas vacías
+        this.currentPlayer = 'X'; //jugador actual a 'X'
+        this.isGameOver = false; //estado del juego false
+        this.updateBoard();
+        this.updateStatus();
     }
 }
-// Inicializa el juego
+// se inicia el juegp
 const game = new Tablero();

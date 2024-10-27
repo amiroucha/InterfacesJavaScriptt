@@ -1,7 +1,14 @@
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 body {
     background-color: #000; /* Fondo negro */
     color: #bac800; 
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -9,17 +16,35 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.container {
+.contenedor {
     text-align: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+.container1 {
+    text-align: center;
+    padding-top: 0;
+}
+.jugadores{
+    width: 84px; 
+    height: 100px; 
+    display: inline-block;/*Para que me salgan alado las imag*/
 }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
+.imagenes{
+    display: flex; /* flexbox para colocar las imágenes en fila */
+    justify-content: center;
+    gap: 300px; /*espacio entre las img*/
+    display: flex
 }
+
+/*imagenes de la celda*/
 .cell img {
     width: 100%; 
     height: auto; 
+    width: 100%; 
+    height: 100%; 
 }
 .board {
     display: grid;
