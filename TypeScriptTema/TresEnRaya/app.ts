@@ -26,13 +26,13 @@ function initGame(): void{
 function updateBoard(): void {
     const cells = boardElement.querySelectorAll('.cell'); // Selecciona todas las celdas
     cells.forEach((cell, index) => {
-        cell.textContent = gameState.getBoard()[index]; // Asigna el contenido del tablero a cada celda
+        cell.textContent = gameState.getBoard()[index] || ''; // Asigna el contenido del tablero a cada celda
     });
 }
 //controla el click en una celda
 function celdaClick(event: MouseEvent):void{
     const target= event.target as HTMLElement;
-    const indice = Number(target.dataset.indice);//indice de la celda click
+    const indice = Number(target.dataset.index);//indice de la celda click
 
     if(gameState.setFicha(indice)){
         updateBoard(); //act tablero
@@ -44,7 +44,7 @@ function celdaClick(event: MouseEvent):void{
 //act estado de quien es el siguientye en jugar
 function actualizaStatus(): void {
     if (!gameState.getIsGameOver()) {//actualiza si el juego no termino
-        statusElement.textContent = `Turno del jugador: `+gameState.getCurrentPlayer; // Muestra el jugador actual
+        statusElement.textContent = `Turno del jugador: ${gameState.getCurrentPlayer()}`; // Muestra el jugador actual
     }
 }
 
