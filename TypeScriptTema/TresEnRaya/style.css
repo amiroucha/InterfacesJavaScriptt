@@ -27,8 +27,8 @@ body {
     padding-top: 0;
 }
 .jugadores{ /*img de los jug*/
-    width: 120px; 
-    height: 150px; 
+    width: 100px; 
+    height: 120px; 
     display: inline-block;/*Para que me salgan alado las imag*/
 }
 
@@ -91,8 +91,8 @@ body {
     transition: background-color 0.3s;
 }
 .reset-button-container{
-    width:auto; /* Hacer que ocupe todo el ancho del contenedor principal */
-    display: flex; /* Usar flex para posicionar el botón */
+    width:auto; 
+    display: flex; /* posicionar el botón */
     justify-content:right; /* Empuja el botón hacia la derecha */
     padding-right: 20px; /* Añade espacio a la derecha para separar un poco el botón */
 }
@@ -103,20 +103,21 @@ body {
 
 /*boton para reiniciar puntos*/
 .newgame-container {
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    width: 100%; 
     display: flex; /* Usar flexbox para alinear el botón */
-    justify-content: flex-end; /* Alinear el botón a la derecha */
-    padding-top: 10px; /* Espacio por encima del botón */
+    justify-content: flex-end; 
+    padding-top: 10px; 
 }
 
 .newgame-container button {
-    background-color: #007bff; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    padding: 10px 20px; /* Espacio dentro del botón */
-    font-size: 1em; /* Tamaño de la fuente */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s; /* Transición suave para el cambio de color */
+    background-color: #007bff; 
+    color: white; 
+    margin-right: 10px;
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 1em; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
 .newgame-container button:hover {
