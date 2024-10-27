@@ -1,6 +1,6 @@
 body {
     background-color: #000; /* Fondo negro */
-    color: #fff; /* Texto blanco */
+    color: #ffffff; /* Texto blanco */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@ h1 {
 }
 
 .cell:hover {
-    background-color: #fffcfc;
+    background-color: #8f8f8f;
 }
 
 .status {
@@ -48,7 +48,7 @@ h1 {
 }
 
 .reset-button {
-    background-color: #f44336;
+    background-color: #96241c;
     color: white;
     border: none;
     padding: 10px 20px;
