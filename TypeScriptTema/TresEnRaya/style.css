@@ -47,8 +47,8 @@ body {
 /*tablero-----------------------------------------------------------*/
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
     gap: 5px;
     margin-bottom: 20px;
     justify-content: space-between; /* Espacio entre el tablero y el botón */
@@ -56,8 +56,8 @@ body {
 }
 /*celdas--------------------------------------------------------------*/
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     background-color: #000000;
     border: 2px solid rgb(166, 182, 60);
     display: flex;
