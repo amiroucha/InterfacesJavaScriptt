@@ -1,43 +1,48 @@
 h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2em; /*tamaño*/
+    margin-bottom: 10px;/*margen inferior*/
     text-align: center;
+    margin-top: 0px;
 }
-
+    
 body {
     background-color: #000; /* Fondo negro */
-    color: #bac800; 
-    display: flex;
-    flex-direction: column; 
+    color: #bac800;
+    display: flex;/*organiza el contenido*/
+    flex-direction: column; /*elementos en columna*/
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     font-family: Arial, sans-serif;
 }
 
 .contenedor {
     text-align: center;
-    display: flex;
+    display: flex; /*organiza*/
     flex-direction: column; 
     align-items: center;
 }
 .container1 {
     text-align: center;
-    padding-top: 0;
 }
 .jugadores{ /*img de los jug*/
-    width: 100px; 
-    height: 120px; 
+    width: 130px; 
+    height: 150px; 
     display: inline-block;/*Para que me salgan alado las imag*/
 }
 
 .imagenes{
     display: flex; /* flexbox para colocar las imágenes en fila */
     justify-content: center;
-    gap: 250px; /*espacio entre las img*/
+    gap: 200px; /*espacio entre las img*/
     display: flex
 }
+
+.score {
+    margin: 0; /* Elimina el margen de los textos de los puntos */
+    padding-top: 70px; /* Añade un pequeño relleno superior si necesitas algo de espacio */
+}
+
 
 /*imagenes de la celda*/
 .cell img {
