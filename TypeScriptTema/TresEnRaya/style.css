@@ -1,20 +1,20 @@
 h1 {
-    font-size: 2em; /*tamaño*/
-    margin-bottom: 0px;/*margen inferior*/
+    font-size: 50px; /*tamaño*/
+    margin-bottom: 60px;/*margen inferior*/
     text-align: center;
     margin-top: 0px;
 }
 
 body {
     background-color: #000; /* Fondo negro */
-    color: #bac800;
+    color: #f3ff4ef3;
     display: flex;/*organiza el contenido*/
     flex-direction: column; /*elementos en columna*/
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: Arial, sans-serif;
-}
+}   
 /*es donde esta todo metido*/
 .contenedor {
     text-align: center;
@@ -38,11 +38,13 @@ body {
 }
 
 .score {
-    margin: 0; /* Elimina el margen de los textos de los puntos */
-    padding-top: 70px; /* Añade un pequeño relleno superior si necesitas algo de espacio */
+    margin: 0; 
+    font-size: 1.2em;
+    padding-top: 70px; 
+    color: #f5f6f1;
 }
 
-
+/*tablero-----------------------------------------------------------*/
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -61,7 +63,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
     cursor: pointer;
     transition: background-color 0.3s;
 }

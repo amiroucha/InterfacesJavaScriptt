@@ -33,8 +33,8 @@ class Tablero {
     }
 
     private getPlayerName(): string {
-        return this.currentPlayer === 'X' ? 'Bob Esponja' : 'Patricio';
-      }
+      return this.currentPlayer === 'X' ? 'Bob Esponja' : 'Patricio';
+    }
 
     // Método para inicializar el tablero de juego
     private initGame(): void {
