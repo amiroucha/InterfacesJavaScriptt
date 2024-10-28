@@ -1,10 +1,10 @@
 h1 {
     font-size: 2em; /*tamaño*/
-    margin-bottom: 10px;/*margen inferior*/
+    margin-bottom: 0px;/*margen inferior*/
     text-align: center;
     margin-top: 0px;
 }
-    
+
 body {
     background-color: #000; /* Fondo negro */
     color: #bac800;
@@ -15,22 +15,20 @@ body {
     height: 100vh;
     font-family: Arial, sans-serif;
 }
-
+/*es donde esta todo metido*/
 .contenedor {
     text-align: center;
     display: flex; /*organiza*/
     flex-direction: column; 
     align-items: center;
 }
-.container1 {
-    text-align: center;
-}
+
 .jugadores{ /*img de los jug*/
     width: 130px; 
     height: 150px; 
     display: inline-block;/*Para que me salgan alado las imag*/
 }
-
+/*imagenes de los laterales*/
 .imagenes{
     display: flex; /* flexbox para colocar las imágenes en fila */
     justify-content: center;
@@ -44,13 +42,6 @@ body {
 }
 
 
-/*imagenes de la celda*/
-.cell img {
-    width: 100%; 
-    height: auto; 
-    width: 100%; 
-    height: 100%; 
-}
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -60,7 +51,7 @@ body {
     justify-content: space-between; /* Espacio entre el tablero y el botón */
     align-items: center; 
 }
-
+/*celdas--------------------------------------------------------------*/
 .cell {
     width: 100px;
     height: 100px;
@@ -73,29 +64,43 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
+/*imagenes de la celda*/
+.cell img {
+    width: 100%; 
+    height: auto; 
+    width: 100%; 
+    height: 100%; 
+}
 .cell:hover { /*color de fondo al pasar por encima*/
     background-color: #646464;
 }
-
+/*color del mensaje de quien juega----------------------------------*/
 .status {
     font-size: 1.2em;
     margin-bottom: 20px;
     color: #f5f6f1;
 }
+/*BOTONES CONTENEDOR-------------------------------------------*/
+.botones-contenedor {
+    width: 98px; 
+    display: flex; 
+    justify-content: space-between; /* Distribuir botones en la misma línea */
+    align-items: center;
+    gap: 250px;
+}
 
-/*boton para reiniciar partida*/
+/*boton para reiniciar partida----------------------------------------*/
 .reset-button {
     background-color: #c2251a;
     color: rgb(255, 255, 255);
     border:none;
-    align-items: right;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 0 auto;
 }
-.reset-button-container{
+.reset-container{
     width:auto; 
     display: flex; /* posicionar el botón */
     justify-content:right; /* Empuja el botón hacia la derecha */
@@ -106,9 +111,9 @@ body {
     background-color: #b90404;
 }
 
-/*boton para reiniciar puntos*/
+/*boton para reiniciar puntos------------------------------------------*/
 .newgame-container {
-    width: 100%; 
+    width: auto; 
     display: flex; /* Usar flexbox para alinear el botón */
     justify-content: flex-end; 
     padding-top: 10px; 
@@ -117,12 +122,12 @@ body {
 .newgame-container button {
     background-color: #007bff; 
     color: white; 
-    margin-right: 10px;
     border: none; 
     padding: 10px 20px; 
     font-size: 1em; 
     cursor: pointer; 
     transition: background-color 0.3s; 
+    white-space: nowrap; /* Mantener texto en una sola línea */
 }
 
 .newgame-container button:hover {
