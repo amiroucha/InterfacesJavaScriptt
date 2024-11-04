@@ -1,0 +1,14 @@
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+input {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
