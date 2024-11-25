@@ -1,4 +1,4 @@
-export interface TopLevel {
+export interface Appi {
     accessToken:  string;
     refreshToken: string;
     id:           number;

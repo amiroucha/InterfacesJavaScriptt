@@ -1,18 +1,17 @@
 import axios from 'axios';
-import { useEffect } from "react"
-import { ReqResUserList } from '../interfaces'
+import { useEffect, useState } from "react"
 
 const loadUsers = async () => {
+
     try {
-      const { data } = await axios.post <ReqResUserList> ('https://dummyjson.com/auth/login');
-      return data.data;
+      const respuesta = await axios.post('https://dummyjson.com/auth/login');
+      return respuesta;
   
     } catch (error) {
       console.log(error);
       return []
     }
   }
-  
   
   export const LoginPage = () => {
   
