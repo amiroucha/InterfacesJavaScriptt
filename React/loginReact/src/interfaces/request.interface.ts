@@ -1,23 +1,11 @@
-export interface ReqResUserList {
-    page:        number;
-    per_page:    number;
-    total:       number;
-    total_pages: number;
-    data:        User[];
-    support:     Support;
-}
-
-
-export interface User {
-    id:         number;
-    email:      string;
-    first_name: string;
-    last_name:  string;
-    password:   string;
-}
-
-
-export interface Support {
-    url:  string;
-    text: string;
+export interface TopLevel {
+    accessToken:  string;
+    refreshToken: string;
+    id:           number;
+    username:     string;
+    email:        string;
+    firstName:    string;
+    lastName:     string;
+    gender:       string;
+    image:        string;
 }

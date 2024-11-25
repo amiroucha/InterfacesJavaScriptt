@@ -4,7 +4,7 @@ import { ReqResUserList } from '../interfaces'
 
 const loadUsers = async () => {
     try {
-      const { data } = await axios.get <ReqResUserList> ('https://dummyjson.com/docs/auth');
+      const { data } = await axios.post <ReqResUserList> ('https://dummyjson.com/auth/login');
       return data.data;
   
     } catch (error) {
@@ -14,7 +14,7 @@ const loadUsers = async () => {
   }
   
   
-  export const UserPage = () => {
+  export const LoginPage = () => {
   
     useEffect(() => {
       loadUsers().then( users => console.log (users));
