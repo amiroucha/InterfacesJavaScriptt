@@ -1,0 +1,67 @@
+.contenedor {
+    margin: 50px auto;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #484444;
+  }
+  
+  form h1 {
+    text-align: center;
+    color: #ccc;
+    font-size: 80px;
+  }
+  /*icono*/
+  h1 b{
+    font-size: 70px;
+    color: #0cacf7; 
+    margin-right: 10px;
+
+  }
+
+  .cajaUsuario,
+  .cajacontrasenia {
+    margin: 15px;
+    align-items: center;
+
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .recordarme {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .recordarme a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .resgistrarse p {
+    text-align: center;
+  }
+  
+  .resgistrarse a {
+    color: #007BFF;
+    text-decoration: none;
+  }
