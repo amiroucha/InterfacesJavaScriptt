@@ -48,13 +48,18 @@
   .contraseniaOlvidada p{
     text-align: right;
     margin-right: 15px;
+
+  }
+  .contraseniaOlvidada a{
+    color: rgb(255, 255, 255);
   }
   .resgistrarse p {
     text-align: center;
     margin-right: 15px;
+    color: white;
   }
   
   .resgistrarse a {
-    color: #007BFF;
+    color: #2eeeff;
     text-decoration: none;
   }
