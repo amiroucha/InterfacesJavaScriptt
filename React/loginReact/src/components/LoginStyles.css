@@ -23,7 +23,7 @@
   .cajacontrasenia {
     margin: 15px;
     align-items: center;
-
+    width: 290px;
   }
   
   input[type="text"],
@@ -36,29 +36,23 @@
   }
   
   button[type="submit"] {
-    width: 100%;
+    width: 313px;    
     padding: 10px;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 15px;
   }
-  
-  .recordarme {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+  .contraseniaOlvidada{
+    text-align: right;
+    margin-right: 15px;
+    color: aquamarine;
   }
-  
-  .recordarme a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  
   .resgistrarse p {
     text-align: center;
+    margin-right: 15px;
   }
   
   .resgistrarse a {

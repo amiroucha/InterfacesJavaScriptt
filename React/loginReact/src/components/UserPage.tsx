@@ -4,7 +4,7 @@ import { ReqResUserList } from '../interfaces'
 
 const loadUsers = async () => {
     try {
-      const { data } = await axios.get <ReqResUserList> ('https://reqres.in/api/users?page=1');
+      const { data } = await axios.get <ReqResUserList> ('https://dummyjson.com/docs/auth');
       return data.data;
   
     } catch (error) {
