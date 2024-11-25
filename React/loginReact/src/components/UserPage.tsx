@@ -7,7 +7,6 @@ const loadUsers = async () => {
       const { data } = await axios.get <ReqResUserList> ('https://reqres.in/api/users?page=1');
       return data.data;
   
-  
     } catch (error) {
       console.log(error);
       return []
