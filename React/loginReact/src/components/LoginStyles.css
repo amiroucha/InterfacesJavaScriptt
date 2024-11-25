@@ -45,10 +45,9 @@
     cursor: pointer;
     margin: 15px;
   }
-  .contraseniaOlvidada{
+  .contraseniaOlvidada p{
     text-align: right;
     margin-right: 15px;
-    color: aquamarine;
   }
   .resgistrarse p {
     text-align: center;
